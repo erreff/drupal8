@@ -4,14 +4,15 @@ set -e
 
 echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
-echo "---> Debug : env"
-env
+#echo "---> Debug : env"
+#env
 
 if [ -f composer.json ]; then
   echo "Found 'composer.json', installing dependencies using composer.phar... "
 
   # Install Composer
-  php -r "readfile('https://getcomposer.org/installer');" | php
+  #php -r "readfile('https://getcomposer.org/installer');" | php
+  curl -sS https://getcomposer.org/installer | php
 
   # Install App dependencies using Composer
   ./composer.phar install --no-interaction --no-ansi --no-scripts --optimize-autoloader
